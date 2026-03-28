@@ -1,3 +1,8 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+import { editorialEase } from "./motion/ease";
+
 const nav = [
   { href: "#aktualne", label: "Prvé číslo" },
   { href: "#o-casopise", label: "O časopise" },
@@ -7,8 +12,15 @@ const nav = [
 ];
 
 export function SiteHeader() {
+  const reduce = useReducedMotion();
+
   return (
-    <header className="sticky top-0 z-40 border-b border-ink/10 bg-cream/95 backdrop-blur-sm">
+    <motion.header
+      className="sticky top-0 z-40 border-b border-ink/10 bg-cream/95 backdrop-blur-sm"
+      initial={reduce ? false : { opacity: 0, y: -8 }}
+      animate={reduce ? undefined : { opacity: 1, y: 0 }}
+      transition={{ duration: 0.55, ease: editorialEase }}
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-6 px-6 py-5 md:px-10">
         <a
           href="#aktualne"
@@ -50,6 +62,6 @@ export function SiteHeader() {
           </div>
         </details>
       </div>
-    </header>
+    </motion.header>
   );
 }
