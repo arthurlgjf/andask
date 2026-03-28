@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --cream: #f5f0e8;
+  --ink: #1a1a18;
+  --brick: #c4603a;
+  --forest: #3a5a40;
+  --paper: #faf8f4;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+  --color-brick: var(--brick);
+  --color-forest: var(--forest);
+  --color-paper: var(--paper);
+  --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), ui-serif, Georgia, "Times New Roman", serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--brick) 25%, transparent);
+    color: var(--ink);
+  }
+
+  :where(input[type="checkbox"]) {
+    accent-color: var(--brick);
+  }
+}
